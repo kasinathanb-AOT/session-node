@@ -10,6 +10,6 @@ router.post("/login", UserController.userLogin);
 router.post("/signup", UserController.userSignUp);
 router.get('/index', UserController.indexPage);
 router.post("/logout", UserController.userLogout);
-router.post("/delete", UserController.deleteUser);
+// router.post("/delete", UserController.deleteUser);
 
 module.exports = router;

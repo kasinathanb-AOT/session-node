@@ -2,7 +2,6 @@ const { v4 } = require('uuid');
 
 const userData = [];
 
-
 function generateError(message) {
   return { error: message };
 }
@@ -47,7 +46,7 @@ const login = (req, res, error) => {
 
 const userSignUp = (req, res) => {
   const { name, userName, password, phoneNumber } = req.body;
-
+  
   let error = generateError(null); 
 
   const existingUser = userData.find((user) => user.userName === userName);
@@ -102,24 +101,33 @@ const userLogout = (req, res) => {
   res.redirect("/login");
 };
 
-const deleteUser = (req, res) => {
-  const { id } = req.body;
-  const index = userData.findIndex(i => i.id == id);
-  if (index !== -1) {
-    userData.splice(index, 1);
-    req.session.user = null;
-    res.redirect("/");
-  } else {
-    res.status(404).send("User not found");
-  }
-};
+
+// const deleteUser = (req, res) => {
+//   if (req.session.user) {
+//     const id  = req.session.user.id;
+
+//     const user = userData.find(i => i.id === id);
+
+//     if (user) {
+//       const updatedUser = userData.filter(i => i.id !== id);
+//       req.session.user = null;
+//       res.redirect("/login");
+//     } else {
+//       req.session.error = "User not found";
+//       res.redirect("/");
+//     }
+//   } else {
+//     req.session.error = "You need to be logged in to delete a user";
+//     res.redirect("/login");
+//   }
+// };
 
 
 module.exports = {
   userSignUp,
   userLogin,
   userLogout,
-  deleteUser,
+  // deleteUser,
   login,
   signUp,
   indexPage,

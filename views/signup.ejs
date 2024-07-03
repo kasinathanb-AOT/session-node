@@ -28,7 +28,7 @@
                         <label for="phoneNumber">Phone Number</label>
                         <input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="Phone Number" required>
                     </div>
-                    <% if (error && error.error) { %>
+                    <% if (error && error) { %>
                         <p class="text-danger"><%= error.error %></p>
                     <% } %>
                     <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
